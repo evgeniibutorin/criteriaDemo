@@ -1,0 +1,9 @@
+package com.example.criteriademo.service;
+
+import com.example.criteriademo.model.Course;
+
+import java.util.List;
+
+public interface CourseService {
+    List<Course> findAllCourses();
+}
