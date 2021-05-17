@@ -2,9 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <html>
-<title>Spring Boot MVC and Hibernate CRUD Example</title>
+<title>Spring MVC, Hibernate and criteria Example</title>
 <body>
-<h2>Spring Boot MVC and Hibernate CRUD Example</h2>
+<h2>Spring MVC, Hibernate and criteria Example</h2>
 
 <h3>Find course by Student name</h3>
 <form method="GET" name="find_course_by_student"

@@ -21,4 +21,10 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findAllStudent() {
         return studentDAO.listStudents();
     }
+    @Override
+    List<Student> findStudentsWithCourses(){
+        return null;
+    };
+
+
 }

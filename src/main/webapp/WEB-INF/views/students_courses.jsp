@@ -6,13 +6,6 @@
 <body>
 <h2>Spring MVC, Hibernate and criteria Example</h2>
 
-<h3>Find Students by course</h3>
-<form method="GET" name="find_student_by_course"
-      action="<%=request.getContextPath()%>/student/find">
-    Student name: <input name="name" value="${name}" type="text" />
-    <br/> <br/>
-    <input value="Find by course" type="submit" />
-</form>
 <br/><a href="<%=request.getContextPath()%>/students">Show all</a><br/>
 <c:choose>
     <c:when test="${students != null}">
@@ -22,6 +15,7 @@
             <tr>
                 <th>id</th>
                 <th>Student</th>
+                <th>Courses</th>
             </tr>
             </tr>
             </thead>
@@ -30,6 +24,7 @@
                 <tr>
                     <td>${s.id}</td>
                     <td>${s.studentName.toString()}</td>
+                    <td><c:forEach var="c" items="${s.courses}">${c.course_name}</c:forEach></td>
                 </tr>
             </c:forEach>
             </tbody>
