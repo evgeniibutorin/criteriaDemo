@@ -7,5 +7,5 @@ import java.util.List;
 public interface StudentDAO {
 
     List<Student> listStudents();
-    List<Student> studentsWithCourses();
+//    List<Student> studentsWithCourses();
 }

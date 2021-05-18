@@ -8,6 +8,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
 public class StudentController {
@@ -29,8 +30,14 @@ public class StudentController {
     @GetMapping("students")
     public String getStudentsCourses(ModelMap courseModel) {
         List<Student> list =studentService.findAllStudent();
+        for (Student s:list){
+            Set<Course> courses = s.getCourses();
+            for (Course c:courses){
+                System.out.println(c.getCourseName());
+            }
+        }
         courseModel.addAttribute("students", list);
-        return "student";
+        return "students_with_course";
     }
 
 

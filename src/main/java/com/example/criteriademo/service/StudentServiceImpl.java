@@ -22,7 +22,7 @@ public class StudentServiceImpl implements StudentService {
         return studentDAO.listStudents();
     }
     @Override
-    List<Student> findStudentsWithCourses(){
+    public List<Student> findStudentsWithCourses(){
         return null;
     };
 

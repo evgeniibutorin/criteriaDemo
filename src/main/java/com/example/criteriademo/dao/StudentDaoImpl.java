@@ -23,17 +23,17 @@ public class StudentDaoImpl implements StudentDAO {
     @Override
     public List<Student> listStudents() {
         Session session = this.sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Student.class);
+        Criteria criteria = session.createCriteria(Student.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
         List<Student> students = criteria.list();
         return students;
     }
 
-    @Override
-    List<Student> studentsWithCourses(){
-        Session session = this.sessionFactory.getCurrentSession();
-        Criteria criteria = session.createCriteria(Student.class);
-        criteria.createAlias("courses", "coursesAlias");
-        criteria.add(Restrictions.eq("tagsAlias.name", someValue);
-        return null;
-    }
+//    @Override
+//    List<Student> studentsWithCourses(){
+//        Session session = this.sessionFactory.getCurrentSession();
+//        Criteria criteria = session.createCriteria(Student.class);
+//        criteria.createAlias("courses", "coursesAlias");
+//        criteria.add(Restrictions.eq("tagsAlias.name", someValue);
+//        return null;
+//    }
 }

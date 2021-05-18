@@ -26,10 +26,10 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach var="s" items="${students}">
+            <c:forEach var="c" items="${students}">
                 <tr>
-                    <td>${s.id}</td>
-                    <td>${s.studentName.toString()}</td>
+                    <td>${c.id}</td>
+                    <td>${c.studentName.toString()}</td>
                 </tr>
             </c:forEach>
             </tbody>
