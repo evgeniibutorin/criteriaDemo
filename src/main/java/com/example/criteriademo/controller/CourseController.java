@@ -6,6 +6,7 @@ import com.example.criteriademo.service.CourseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Set;
@@ -39,5 +40,11 @@ public class CourseController {
         return "students_courses";
     }
 
+    @GetMapping("/courses/find")
+    public String getCoursesByStudentName(@RequestParam(value = "name") String name, ModelMap courseModel) {
+        List<Course> list = courseService.getCoursesByStudentName(name);
+        courseModel.addAttribute("courses", list);
+        return "course";
+    }
 
 }

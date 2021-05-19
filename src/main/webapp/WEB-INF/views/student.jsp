@@ -9,7 +9,7 @@
 <h3>Find Students by course</h3>
 <form method="GET" name="find_student_by_course"
       action="<%=request.getContextPath()%>/student/find">
-    Student name: <input name="name" value="${name}" type="text" />
+    Course name: <input name="name" value="${name}" type="text" />
     <br/> <br/>
     <input value="Find by course" type="submit" />
 </form>

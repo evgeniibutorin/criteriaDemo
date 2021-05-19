@@ -4,6 +4,7 @@ import com.example.criteriademo.model.Student;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -20,6 +21,16 @@ public class StudentDaoImpl implements StudentDAO {
     public List<Student> listStudents() {
         Session session = this.sessionFactory.getCurrentSession();
         Criteria criteria = session.createCriteria(Student.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+        List<Student> students = criteria.list();
+        return students;
+    }
+
+    @Override
+    public List<Student> findStudentsByCoursesName(String courseName) {
+        Session session = this.sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Student.class, "st");
+        criteria.createAlias("st.courses", "cr");//createAlias эквивалент join. первым параметром указываем имя поля в сущности вторым псевдоним
+        criteria.add(Restrictions.eq("cr.courseName", courseName));//Restrictions.eq сравнивает переданные параметры
         List<Student> students = criteria.list();
         return students;
     }

@@ -28,4 +28,15 @@ public class StudentServiceImpl implements StudentService {
         return students;
     }
 
+    @Override
+    @Transactional
+    public List<Student> getStudentByCourseName(String name) {
+        List<Student> students = studentDAO.findStudentsByCoursesName(name);
+        for (Student student : students) {
+            Hibernate.initialize(student.getCourses());
+        }
+        return students;
+    }
+
+
 }

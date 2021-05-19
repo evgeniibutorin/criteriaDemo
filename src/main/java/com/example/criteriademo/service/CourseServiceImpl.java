@@ -2,6 +2,7 @@ package com.example.criteriademo.service;
 
 import com.example.criteriademo.dao.CourseDao;
 import com.example.criteriademo.model.Course;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,5 +22,15 @@ public class CourseServiceImpl implements CourseService {
     public List<Course> findAllCourses() {
         List<Course> list = courseDao.listCourses();
         return list;
+    }
+
+    @Override
+    @Transactional
+    public List<Course> getCoursesByStudentName(String name) {
+        List<Course> courses = courseDao.findCoursesByStudentName(name);
+        for (Course course : courses) {
+            Hibernate.initialize(course.getStudents());
+        }
+        return courses;
     }
 }
