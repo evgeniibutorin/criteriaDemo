@@ -2,6 +2,7 @@ package com.example.criteriademo.service;
 
 import com.example.criteriademo.dao.StudentDAO;
 import com.example.criteriademo.model.Student;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,12 +20,12 @@ public class StudentServiceImpl implements StudentService {
     @Override
     @Transactional
     public List<Student> findAllStudent() {
-        return studentDAO.listStudents();
+        List<Student> students = studentDAO.listStudents();
+        for (Student student : students) {
+//            student.getCourses();
+            Hibernate.initialize(student.getCourses());
+        }
+        return students;
     }
-    @Override
-    public List<Student> findStudentsWithCourses(){
-        return null;
-    };
-
 
 }

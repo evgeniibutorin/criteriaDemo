@@ -22,23 +22,21 @@ public class StudentController {
 
     @GetMapping("student")
     public String getStudent(ModelMap courseModel) {
-        List<Student> list =studentService.findAllStudent();
+        List<Student> list = studentService.findAllStudent();
         courseModel.addAttribute("students", list);
         return "student";
     }
 
     @GetMapping("students")
     public String getStudentsCourses(ModelMap courseModel) {
-        List<Student> list =studentService.findAllStudent();
-        for (Student s:list){
+        List<Student> list = studentService.findAllStudent();
+        for (Student s : list) {
             Set<Course> courses = s.getCourses();
-            for (Course c:courses){
+            for (Course c : courses) {
                 System.out.println(c.getCourseName());
             }
         }
         courseModel.addAttribute("students", list);
         return "students_with_course";
     }
-
-
 }

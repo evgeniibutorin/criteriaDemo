@@ -4,11 +4,9 @@ import com.example.criteriademo.model.Student;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -18,8 +16,6 @@ public class StudentDaoImpl implements StudentDAO {
     @Qualifier("sessionFactory")
     private SessionFactory sessionFactory;
 
-
-
     @Override
     public List<Student> listStudents() {
         Session session = this.sessionFactory.getCurrentSession();
@@ -28,12 +24,4 @@ public class StudentDaoImpl implements StudentDAO {
         return students;
     }
 
-//    @Override
-//    List<Student> studentsWithCourses(){
-//        Session session = this.sessionFactory.getCurrentSession();
-//        Criteria criteria = session.createCriteria(Student.class);
-//        criteria.createAlias("courses", "coursesAlias");
-//        criteria.add(Restrictions.eq("tagsAlias.name", someValue);
-//        return null;
-//    }
 }

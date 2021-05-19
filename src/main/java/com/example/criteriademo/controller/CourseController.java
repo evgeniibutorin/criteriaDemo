@@ -19,7 +19,6 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    ///WEB-INF/view
     @GetMapping("course")
     public String getCourses(ModelMap courseModel) {
         List<Course> list = courseService.findAllCourses();
@@ -29,17 +28,16 @@ public class CourseController {
 
     @GetMapping("courses")
     public String getCoursesWithStudentName(ModelMap courseModel) {
-        List<Course> list =courseService.findAllCourses();
-        for (Course course:list){
+        List<Course> list = courseService.findAllCourses();
+        for (Course course : list) {
             Set<Student> students = course.getStudents();
-            for (Student s:students){
+            for (Student s : students) {
                 System.out.println(s.getStudentName());
             }
         }
         courseModel.addAttribute("courses", list);
         return "students_courses";
     }
-
 
 
 }

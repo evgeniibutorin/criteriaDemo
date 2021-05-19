@@ -30,7 +30,7 @@ public class Student {
 
     @Setter
     @Getter
-    @Fetch(FetchMode.JOIN)
+//    @Fetch(FetchMode.JOIN)
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "student_course",
