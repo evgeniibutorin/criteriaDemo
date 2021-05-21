@@ -7,4 +7,5 @@ import java.util.List;
 public interface StudentService {
     List<Student> findAllStudent();
     List<Student> getStudentByCourseName(String name);
+    List<Student> findStudentByCoursesCost(int cost);
 }

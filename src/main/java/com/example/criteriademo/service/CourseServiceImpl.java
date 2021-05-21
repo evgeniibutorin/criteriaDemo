@@ -33,4 +33,12 @@ public class CourseServiceImpl implements CourseService {
         }
         return courses;
     }
+
+    @Override
+    @Transactional
+    public List<Course> findExpensiveCourse() {
+        List<Course> list = courseDao.findExpensiveCourse();
+        return list;
+    }
+
 }

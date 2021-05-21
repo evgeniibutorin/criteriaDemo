@@ -28,7 +28,7 @@ public class StudentController {
         return "student";
     }
 
-    @GetMapping("/student/find")
+    @GetMapping("student/find")
     public String getStudentsByCourse(@RequestParam(value = "name") String name, ModelMap studentModel){
         List<Student> list = studentService.getStudentByCourseName(name);
         studentModel.addAttribute("students", list);
@@ -47,5 +47,12 @@ public class StudentController {
         }
         courseModel.addAttribute("students", list);
         return "students_with_course";
+    }
+
+    @GetMapping("student/cost")
+    public String getStudentByCoursesCost(@RequestParam(value = "cost") String cost,ModelMap courseModel) {
+        List<Student> list = studentService.findStudentByCoursesCost(Integer.parseInt(cost));
+        courseModel.addAttribute("students", list);
+        return "student";
     }
 }

@@ -22,7 +22,6 @@ public class StudentServiceImpl implements StudentService {
     public List<Student> findAllStudent() {
         List<Student> students = studentDAO.listStudents();
         for (Student student : students) {
-//            student.getCourses();
             Hibernate.initialize(student.getCourses());
         }
         return students;
@@ -32,6 +31,16 @@ public class StudentServiceImpl implements StudentService {
     @Transactional
     public List<Student> getStudentByCourseName(String name) {
         List<Student> students = studentDAO.findStudentsByCoursesName(name);
+        for (Student student : students) {
+            Hibernate.initialize(student.getCourses());
+        }
+        return students;
+    }
+
+    @Override
+    @Transactional
+    public List<Student> findStudentByCoursesCost(int cost) {
+        List<Student> students = studentDAO.findStudentByCoursesCost(cost);
         for (Student student : students) {
             Hibernate.initialize(student.getCourses());
         }

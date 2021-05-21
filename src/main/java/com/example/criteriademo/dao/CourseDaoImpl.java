@@ -4,6 +4,7 @@ import com.example.criteriademo.model.Course;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,6 +34,16 @@ public class CourseDaoImpl implements CourseDao {
         criteria.add(Restrictions.eq("st.studentName", studentName));//Restrictions.eq сравнивает переданные параметры
         List<Course> courses = criteria.list();
         return courses;
+    }
+
+    @Override
+    public List<Course> findExpensiveCourse() {
+        Session session = this.sessionFactory.getCurrentSession();
+        Criteria criteria = session.createCriteria(Course.class);
+        criteria.setProjection(Projections.max("courseCost"));
+        List<Course> list = criteria.list();
+        System.out.println("Max cost is = " + list.get(0));
+        return list;
     }
 }
 

@@ -11,7 +11,13 @@
       action="<%=request.getContextPath()%>/student/find">
     Course name: <input name="name" value="${name}" type="text" />
     <br/> <br/>
-    <input value="Find by course" type="submit" />
+    <input value="Find by course name" type="submit" />
+</form>
+<form method="GET" name="find_student_by_cost"
+      action="<%=request.getContextPath()%>/student/cost">
+    Course cost: <input name="cost" value="${cost}" type="text" />
+    <br/> <br/>
+    <input value="Find by course cost" type="submit" />
 </form>
 <br/><a href="<%=request.getContextPath()%>/students">Show all</a><br/>
 <c:choose>

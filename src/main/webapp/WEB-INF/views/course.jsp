@@ -14,6 +14,7 @@
     <input value="Find by name" type="submit" />
 </form>
 <br/><a href="<%=request.getContextPath()%>/courses">Show all</a><br/>
+<br/><a href="<%=request.getContextPath()%>/expensive_courses">Show the most expensive </a><br/>
 
 <c:choose>
     <c:when test="${courses != null}">
@@ -23,6 +24,7 @@
             <tr>
                 <th>id</th>
                 <th>Course</th>
+                <th>Cost</th>
             </tr>
             </tr>
             </thead>
@@ -31,6 +33,7 @@
                 <tr>
                     <td>${c.id}</td>
                     <td>${c.courseName.toString()}</td>
+                    <td>${c.courseCost.toString()}
                 </tr>
             </c:forEach>
             </tbody>

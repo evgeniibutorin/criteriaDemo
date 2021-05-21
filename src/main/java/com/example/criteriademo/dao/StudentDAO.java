@@ -8,4 +8,5 @@ public interface StudentDAO {
 
     List<Student> listStudents();
     List<Student> findStudentsByCoursesName(String courseName);
+    List<Student> findStudentByCoursesCost(int cost);
 }

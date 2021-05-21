@@ -28,6 +28,11 @@ public class Course {
     @Setter
     String courseName;
 
+    @Column(name = "course_cost")
+    @Getter
+    @Setter
+    int courseCost;
+
     @Getter
     @Setter
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

@@ -46,5 +46,14 @@ public class CourseController {
         courseModel.addAttribute("courses", list);
         return "course";
     }
+    @GetMapping("/expensive_courses")
+    public String getExpensiveCourse( ModelMap courseModel) {
+        List<Course> list = courseService.findExpensiveCourse();
+        courseModel.addAttribute("courses", list);
+        return "course";
+    }
+
+
+
 
 }
