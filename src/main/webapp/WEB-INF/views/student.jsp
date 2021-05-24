@@ -19,6 +19,14 @@
     <br/> <br/>
     <input value="Find by course cost" type="submit" />
 </form>
+
+<form method="GET" name="find_student_by_cost_more_then"
+      action="<%=request.getContextPath()%>/student/cost/more">
+    Course with cost more then: <input name="cost" value="${cost}" type="text" />
+    <br/> <br/>
+    <input value="Find by course cost more then" type="submit" />
+</form>
+
 <br/><a href="<%=request.getContextPath()%>/students">Show all</a><br/>
 <c:choose>
     <c:when test="${students != null}">

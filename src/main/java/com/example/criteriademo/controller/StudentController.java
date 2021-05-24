@@ -55,4 +55,12 @@ public class StudentController {
         courseModel.addAttribute("students", list);
         return "student";
     }
+
+    @GetMapping("/student/cost/more")
+    public String getStudentWithExpensiveCourse(@RequestParam(value = "cost") String cost, ModelMap courseModel) {
+        List<Student> list = studentService.getStudentsWithExpensiveCourse(cost);
+        courseModel.addAttribute("students", list);
+        return "student";
+    }
+
 }

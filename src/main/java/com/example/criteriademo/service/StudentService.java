@@ -8,4 +8,5 @@ public interface StudentService {
     List<Student> findAllStudent();
     List<Student> getStudentByCourseName(String name);
     List<Student> findStudentByCoursesCost(int cost);
+    List<Student> getStudentsWithExpensiveCourse(String cost);
 }

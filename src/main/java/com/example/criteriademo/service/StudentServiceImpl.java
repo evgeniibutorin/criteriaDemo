@@ -47,5 +47,15 @@ public class StudentServiceImpl implements StudentService {
         return students;
     }
 
+    @Override
+    @Transactional
+    public List<Student> getStudentsWithExpensiveCourse(String cost) {
+        List<Student> students = studentDAO.findStudentWithExpensiveCourse(cost);
+        for (Student student : students) {
+            Hibernate.initialize(student.getCourses());
+        }
+        return students;
+    }
+
 
 }
