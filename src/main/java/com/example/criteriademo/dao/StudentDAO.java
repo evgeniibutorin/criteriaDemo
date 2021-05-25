@@ -10,4 +10,5 @@ public interface StudentDAO {
     List<Student> findStudentsByCoursesName(String courseName);
     List<Student> findStudentByCoursesCost(int cost);
     List<Student> findStudentWithExpensiveCourse(String cost);
+    List<Student> findStudentInSomeList();
 }

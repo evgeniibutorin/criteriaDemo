@@ -57,5 +57,15 @@ public class StudentServiceImpl implements StudentService {
         return students;
     }
 
+    @Override
+    @Transactional
+    public List<Student> getStudentInList() {
+        List<Student> students = studentDAO.findStudentInSomeList();
+        for (Student student : students) {
+            Hibernate.initialize(student.getCourses());
+        }
+        return students;
+    }
+
 
 }

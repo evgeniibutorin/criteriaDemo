@@ -63,4 +63,14 @@ public class StudentController {
         return "student";
     }
 
+    @GetMapping("students/from/list")
+    public String getStudentInList(ModelMap courseModel) {
+        List<Student> list = studentService.getStudentInList();
+        courseModel.addAttribute("students", list);
+        return "student";
+    }
+
+
+
+
 }

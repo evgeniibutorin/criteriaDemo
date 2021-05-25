@@ -15,8 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 
 @Repository
 public class StudentDaoImpl implements StudentDAO {
@@ -64,30 +65,43 @@ public class StudentDaoImpl implements StudentDAO {
         Criteria c = session.createCriteria(Student.class, "st").setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 
         DetachedCriteria dc = DetachedCriteria.forClass(Course.class, "cr");
-        dc.createAlias("cr.students","st2");
-        dc.add(Restrictions.ge("cr.courseCost",Integer.parseInt(cost)));
+        dc.createAlias("cr.students", "st2");
+        dc.add(Restrictions.ge("cr.courseCost", Integer.parseInt(cost)));
         dc.setProjection(Projections.property("st2.id"));
 
         c.add(Subqueries.propertyIn("st.id", dc));
         List<Student> students = c.list();
         return students;
+    }
 
+    @Override
+    public List<Student> findStudentInSomeList() {
+        List<Integer> studentIdes = new ArrayList<>();
+        for (int i=0; i<10003; i++){
+            studentIdes.add(i);
+        }
+        List<String> studentNames = new ArrayList<>(Arrays.asList( "Max", "Jon", "Linda", "Pit", "Evelin"));
+        Session session = this.sessionFactory.getCurrentSession();
+        Criteria c = session.createCriteria(Student.class, "st").setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).add(
+                Restrictions.and(
+                        Restrictions.in("id",studentIdes)
+                )
+        );
+        List<Student> students = c.list();
+        return students;
     }
 
 
-
-
-
-//
-//    SELECT *
-//    FROM student s
-//    WHERE s.id
-//    IN (SELECT s.id
-//                    FROM student s
-//                    INNER JOIN student_course s_c on s.id = s_c.student_id
-//                    INNER JOIN Course c on s_c.course_id = c.id
-//                    GROUP BY s.id
-//                    HAVING max(course_cost) > 300);
-//
-
+//    @Override
+//    public List<Student> findStudentInSomeList() {
+//        List<String> studentNames = new ArrayList<>(Arrays.asList( "Max", "Jon", "Linda", "Pit", "Evelin"));
+//        Session session = this.sessionFactory.getCurrentSession();
+//        Criteria c = session.createCriteria(Student.class, "st").setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).add(
+//                Restrictions.and(
+//                        Restrictions.in("studentName", studentNames)
+//                )
+//        );
+//        List<Student> students = c.list();
+//        return students;
+//    }
 }

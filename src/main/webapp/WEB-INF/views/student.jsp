@@ -28,6 +28,7 @@
 </form>
 
 <br/><a href="<%=request.getContextPath()%>/students">Show all</a><br/>
+<br/><a href="<%=request.getContextPath()%>/students/from/list">Show from list</a><br/>
 <c:choose>
     <c:when test="${students != null}">
         <h3>List of student</h3>

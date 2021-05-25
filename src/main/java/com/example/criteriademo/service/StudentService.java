@@ -9,4 +9,5 @@ public interface StudentService {
     List<Student> getStudentByCourseName(String name);
     List<Student> findStudentByCoursesCost(int cost);
     List<Student> getStudentsWithExpensiveCourse(String cost);
+    List<Student> getStudentInList();
 }
