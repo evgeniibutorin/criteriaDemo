@@ -38,6 +38,11 @@ public class CourseDaoImpl implements CourseDao {
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<Course> criteriaQuery = criteriaBuilder.createQuery(Course.class); // CriteriaQuery устанавливает функционал для запросов верхнего уровня
         Root<Student> studentRoot = criteriaQuery.from(Student.class);//Root - корневой тип в from clause корни запросов всегда ссылаются на сущность
+
+//        Predicate equal = criteriaBuilder.equal(studentRoot.get(Student_.studentName), studentName);
+//
+//        equal = criteriaBuilder.or(equal, criteriaBuilder.equal(studentRoot.get(Student_.studentName), studentName));
+
         criteriaQuery.where(criteriaBuilder.equal(studentRoot.get(Student_.studentName), studentName));
         SetJoin<Student, Course> studentCourseSetJoin = studentRoot.join(Student_.courses);
         CriteriaQuery<Course> cq = criteriaQuery.select(studentCourseSetJoin);
@@ -45,9 +50,6 @@ public class CourseDaoImpl implements CourseDao {
         List<Course> courses = query.getResultList();
         return courses;
     }
-
-
-    //select course from course where course_cost = (SELECT MAX(course.course_cost) from course);
 
     @Override
     public List<Course> findExpensiveCourse() {

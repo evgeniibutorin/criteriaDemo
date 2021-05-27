@@ -3,6 +3,8 @@ package com.example.criteriademo.dao;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.Predicate;
 import java.util.List;
 
 public class HibernateBuildInCriterion {
@@ -19,6 +21,7 @@ public class HibernateBuildInCriterion {
      */
     public static Criterion buildInCriterion1(String propertyName, List<?> values) { // пимер с 1001
         Criterion criterion = null;
+        Predicate predicate = null;
         int listSize = values.size();//1001 размер списка параметров
         for (int i = 0; i < listSize; i += PARAMETER_LIMIT) {//0 1001 800 потом? 00 1001 1600 не понятно i += PARAMETER_LIMIT эквивалент i = i+PARAMETER_LIMIT Зачем?
             List<?> subList;
@@ -27,7 +30,12 @@ public class HibernateBuildInCriterion {
             } else {
                 subList = values.subList(i, listSize);
             }
-            if (criterion != null) {
+//
+//            Predicate equal = criteriaBuilder.equal(studentRoot.get(Student_.studentName), studentName);
+//
+//        equal = criteriaBuilder.or(equal, criteriaBuilder.equal(studentRoot.get(Student_.studentName), studentName));
+
+            if (predicate != null) {
                 criterion = Restrictions.or(criterion, Restrictions.in(propertyName, subList));
             } else {
                 criterion = Restrictions.in(propertyName, subList);
