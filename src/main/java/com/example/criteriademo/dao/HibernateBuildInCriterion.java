@@ -36,11 +36,4 @@ public class HibernateBuildInCriterion {
         return criterion;
     }
 
-
-
-
-
-
-
-
 }

@@ -15,6 +15,7 @@
 </form>
 <br/><a href="<%=request.getContextPath()%>/courses">Show all</a><br/>
 <br/><a href="<%=request.getContextPath()%>/expensive_courses">Show the most expensive </a><br/>
+<c:out value="${cost}"></c:out>
 
 <c:choose>
     <c:when test="${courses != null}">
@@ -45,3 +46,4 @@
 </c:choose>
 
 </body>
+</html>
