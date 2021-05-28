@@ -3,25 +3,17 @@ package com.example.criteriademo.dao;
 import com.example.criteriademo.model.Course;
 import com.example.criteriademo.model.Course_;
 import com.example.criteriademo.model.Student;
-import org.hibernate.Criteria;
+import com.example.criteriademo.model.Student_;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.criterion.Subqueries;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import javax.persistence.criteria.SetJoin;
+import javax.persistence.criteria.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -86,18 +78,33 @@ public class StudentDaoImpl implements StudentDAO {
 
     @Override
     public List<Student> findStudentInSomeList() {
+        Session session = this.sessionFactory.getCurrentSession();
+        CriteriaBuilder cb = session.getCriteriaBuilder();
+        CriteriaQuery<Student> cq = cb.createQuery(Student.class);
+        Root<Student> studentRoot = cq.from(Student.class);
+        final int PARAMETER_LIMIT = 800;
+        Predicate predicate = null;
         List<Integer> studentIdes = new ArrayList<>();
-        for (int i = 0; i < 10003; i++) {
+        for (int i = 0; i < 1003; i++) {
             studentIdes.add(i);
         }
-        List<String> studentNames = new ArrayList<>(Arrays.asList("Max", "Jon", "Linda", "Pit", "Evelin"));
-        Session session = this.sessionFactory.getCurrentSession();
-        Criteria c = session.createCriteria(Student.class, "st").setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).add(
-                Restrictions.and(
-                        Restrictions.in("id", studentIdes)
-                )
-        );
-        List<Student> students = c.list();
+        int listSize = studentIdes.size();
+        for (int i = 0; i < listSize; i += PARAMETER_LIMIT) {
+            List<?> subList;
+            if (listSize > i + PARAMETER_LIMIT) {
+                subList = studentIdes.subList(i, (i + PARAMETER_LIMIT));
+            } else {
+                subList = studentIdes.subList(i, listSize);
+            }
+            if (predicate != null) {
+                predicate = cb.or(predicate, studentRoot.get(Student_.ID).in(subList));
+            } else {
+                predicate = studentRoot.get(Student_.ID).in(subList);
+            }
+        }
+        cq.select(studentRoot).where(predicate);
+        Query<Student> query = session.createQuery(cq);
+        List<Student> students = query.getResultList();
         return students;
     }
 }

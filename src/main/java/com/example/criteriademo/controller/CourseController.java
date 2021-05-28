@@ -1,5 +1,6 @@
 package com.example.criteriademo.controller;
 
+import com.example.criteriademo.dto.CourseDto;
 import com.example.criteriademo.model.Course;
 import com.example.criteriademo.model.Student;
 import com.example.criteriademo.service.CourseService;
@@ -22,15 +23,15 @@ public class CourseController {
 
     @GetMapping("course")
     public String getCourses(ModelMap courseModel) {
-        List<Course> list = courseService.findAllCourses();
+        List<CourseDto> list = courseService.findAllCourses();
         courseModel.addAttribute("courses", list);
         return "course";
     }
 
     @GetMapping("courses")
     public String getCoursesWithStudentName(ModelMap courseModel) {
-        List<Course> list = courseService.findAllCourses();
-        for (Course course : list) {
+        List<CourseDto> list = courseService.findAllCourses();
+        for (CourseDto course : list) {
             Set<Student> students = course.getStudents();
             for (Student s : students) {
                 System.out.println(s.getStudentName());

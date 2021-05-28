@@ -1,27 +1,35 @@
 package com.example.criteriademo.service;
 
 import com.example.criteriademo.dao.CourseDao;
+import com.example.criteriademo.dto.CourseDto;
 import com.example.criteriademo.model.Course;
+import com.example.criteriademo.utils.MapingUtis;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CourseServiceImpl implements CourseService {
 
-    private CourseDao courseDao;
+    private final CourseDao courseDao;
+    private final MapingUtis mapingUtis;
 
-    public CourseServiceImpl(CourseDao courseDao) {
+    public CourseServiceImpl(CourseDao courseDao, MapingUtis mapingUtis) {
         this.courseDao = courseDao;
+        this.mapingUtis = mapingUtis;
     }
 
     @Override
     @Transactional
-    public List<Course> findAllCourses() {
-        List<Course> list = courseDao.listCourses();
-        return list;
+    public List<CourseDto> findAllCourses() {
+//        List<Course> list = courseDao.listCourses();
+//        return list;
+        return courseDao.listCourses().stream()
+                .map(mapingUtis::mapToCourseDTo)
+                .collect(Collectors.toList());
     }
 
     @Override
