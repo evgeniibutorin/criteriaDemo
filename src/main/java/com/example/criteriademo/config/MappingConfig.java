@@ -17,7 +17,8 @@ public class MappingConfig {
            @Override
            protected void configure() {
                mapping(Student.class, StudentDto.class);
-               mapping(Course.class, CourseDto.class);
+               mapping(Course.class, CourseDto.class)
+               .fields("courseCost","cost");
            }
        };
     }

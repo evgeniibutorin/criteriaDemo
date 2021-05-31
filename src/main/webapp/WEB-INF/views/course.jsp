@@ -34,7 +34,7 @@
                 <tr>
                     <td>${c.id}</td>
                     <td>${c.courseName.toString()}</td>
-                    <td>${c.courseCost.toString()}
+                    <td>${c.cost.toString()}
                 </tr>
             </c:forEach>
             </tbody>

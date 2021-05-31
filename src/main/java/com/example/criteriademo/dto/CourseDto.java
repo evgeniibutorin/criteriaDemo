@@ -11,7 +11,7 @@ public class CourseDto {
 
     int id;
     String courseName;
-    int courseCost;
+    int cost;
     Set<Student> students = new HashSet<>();
 }
 
