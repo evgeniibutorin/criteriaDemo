@@ -7,11 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Set;
 
-@Controller
+@RestController
 public class StudentController {
     private final StudentService studentService;
 
@@ -20,10 +22,9 @@ public class StudentController {
     }
 
     @GetMapping("student")
-    public String getStudent(ModelMap courseModel) {
+    public List<StudentDto> getStudent() {
         List<StudentDto> list = studentService.findAllStudent();
-        courseModel.addAttribute("students", list);
-        return "student";
+        return list;
     }
 
     @GetMapping("student/find")

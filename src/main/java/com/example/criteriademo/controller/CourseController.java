@@ -1,7 +1,6 @@
 package com.example.criteriademo.controller;
 
 import com.example.criteriademo.dto.CourseDto;
-import com.example.criteriademo.model.Course;
 import com.example.criteriademo.model.Student;
 import com.example.criteriademo.service.CourseService;
 import org.springframework.stereotype.Controller;
@@ -47,14 +46,13 @@ public class CourseController {
         courseModel.addAttribute("courses", list);
         return "course";
     }
+
     @GetMapping("/expensive_courses")
-    public String getExpensiveCourse( ModelMap courseModel) {
+    public String getExpensiveCourse(ModelMap courseModel) {
         List<CourseDto> list = courseService.findExpensiveCourse();
         courseModel.addAttribute("courses", list);
         return "course";
     }
-
-
 
 
 }

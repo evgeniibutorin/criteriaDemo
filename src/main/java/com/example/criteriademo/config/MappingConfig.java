@@ -2,8 +2,10 @@ package com.example.criteriademo.config;
 
 import com.example.criteriademo.dto.CourseDto;
 import com.example.criteriademo.dto.StudentDto;
+import com.example.criteriademo.dto.UniversityDto;
 import com.example.criteriademo.model.Course;
 import com.example.criteriademo.model.Student;
+import com.example.criteriademo.model.University;
 import org.dozer.DozerBeanMapper;
 import org.dozer.loader.api.BeanMappingBuilder;
 import org.springframework.context.annotation.Bean;
@@ -17,6 +19,7 @@ public class MappingConfig {
            @Override
            protected void configure() {
                mapping(Student.class, StudentDto.class);
+               mapping(University.class, UniversityDto.class);
                mapping(Course.class, CourseDto.class)
                .fields("courseCost","cost");
            }

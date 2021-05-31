@@ -792,7 +792,7 @@ false YEKT
 false Z
 false Zulu
 </TimeZones>
-      <StartupTime>1621412333</StartupTime>
+      <StartupTime>1622019574</StartupTime>
     </root>
     <database id="2" parent="1" name="demohib">
       <ObjectId>16414</ObjectId>
@@ -824,9 +824,10 @@ false Zulu
 13158||-9223372036854775808|U|G
 13158||10|U|G</Grants>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>2371</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2398</IntrospectionStateNumber>
       <Current>1</Current>
-      <Relations>sequence|table|27602|27604|1
+      <Relations>sequence|table|27643|27645|1
+sequence|table|27602|27604|1
 sequence|table|27610|27612|1
 sequence|table|27618|27624|1
 sequence|table|27620|27624|2
@@ -895,7 +896,7 @@ sequence|table|27622|27624|3
       <Comment>standard public schema</Comment>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>2372</IntrospectionStateNumber>
+      <IntrospectionStateNumber>2399</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="21" parent="6" name="plpgsql">
@@ -1025,22 +1026,33 @@ sequence|table|27622|27624|3
       <StateNumber>2369</StateNumber>
       <DataType>integer|0s</DataType>
     </sequence>
-    <table id="38" parent="20" name="course">
+    <sequence id="38" parent="20" name="university_id_seq">
+      <ObjectId>27643</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>2397</StateNumber>
+      <DataType>integer|0s</DataType>
+    </sequence>
+    <table id="39" parent="20" name="course">
       <ObjectId>27604</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>2370</StateNumber>
     </table>
-    <table id="39" parent="20" name="student">
+    <table id="40" parent="20" name="student">
       <ObjectId>27612</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>2370</StateNumber>
     </table>
-    <table id="40" parent="20" name="student_course">
+    <table id="41" parent="20" name="student_course">
       <ObjectId>27624</ObjectId>
       <Owner>postgres</Owner>
       <StateNumber>2370</StateNumber>
     </table>
-    <column id="41" parent="38" name="id">
+    <table id="42" parent="20" name="university">
+      <ObjectId>27645</ObjectId>
+      <Owner>postgres</Owner>
+      <StateNumber>2397</StateNumber>
+    </table>
+    <column id="43" parent="39" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -1048,19 +1060,19 @@ sequence|table|27622|27624|3
       <DefaultExpression>nextval(&apos;course_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="42" parent="38" name="course_name">
+    <column id="44" parent="39" name="course_name">
       <Position>2</Position>
       <DataType>char(100)|0s</DataType>
       <StateNumber>2368</StateNumber>
       <TypeId>1042</TypeId>
     </column>
-    <column id="43" parent="38" name="course_cost">
+    <column id="45" parent="39" name="course_cost">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <StateNumber>2368</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <index id="44" parent="38" name="course_pkey">
+    <index id="46" parent="39" name="course_pkey">
       <ObjectId>27608</ObjectId>
       <StateNumber>2368</StateNumber>
       <ColNames>id</ColNames>
@@ -1070,14 +1082,14 @@ sequence|table|27622|27624|3
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <key id="45" parent="38" name="course_pkey">
+    <key id="47" parent="39" name="course_pkey">
       <ObjectId>27609</ObjectId>
       <StateNumber>2368</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>course_pkey</UnderlyingIndexName>
     </key>
-    <column id="46" parent="39" name="id">
+    <column id="48" parent="40" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -1085,13 +1097,13 @@ sequence|table|27622|27624|3
       <DefaultExpression>nextval(&apos;student_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="47" parent="39" name="student_name">
+    <column id="49" parent="40" name="student_name">
       <Position>2</Position>
       <DataType>char(100)|0s</DataType>
       <StateNumber>2369</StateNumber>
       <TypeId>1042</TypeId>
     </column>
-    <index id="48" parent="39" name="student_pkey">
+    <index id="50" parent="40" name="student_pkey">
       <ObjectId>27616</ObjectId>
       <StateNumber>2369</StateNumber>
       <ColNames>id</ColNames>
@@ -1101,14 +1113,14 @@ sequence|table|27622|27624|3
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <key id="49" parent="39" name="student_pkey">
+    <key id="51" parent="40" name="student_pkey">
       <ObjectId>27617</ObjectId>
       <StateNumber>2369</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>student_pkey</UnderlyingIndexName>
     </key>
-    <column id="50" parent="40" name="id">
+    <column id="52" parent="41" name="id">
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -1116,7 +1128,7 @@ sequence|table|27622|27624|3
       <DefaultExpression>nextval(&apos;student_course_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="51" parent="40" name="student_id">
+    <column id="53" parent="41" name="student_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -1124,7 +1136,7 @@ sequence|table|27622|27624|3
       <DefaultExpression>nextval(&apos;student_course_student_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <column id="52" parent="40" name="course_id">
+    <column id="54" parent="41" name="course_id">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
@@ -1132,7 +1144,7 @@ sequence|table|27622|27624|3
       <DefaultExpression>nextval(&apos;student_course_course_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
-    <index id="53" parent="40" name="student_course_pkey">
+    <index id="55" parent="41" name="student_course_pkey">
       <ObjectId>27630</ObjectId>
       <StateNumber>2370</StateNumber>
       <ColNames>id</ColNames>
@@ -1142,14 +1154,14 @@ sequence|table|27622|27624|3
       <CollationIds>0</CollationIds>
       <ClassIds>1978</ClassIds>
     </index>
-    <key id="54" parent="40" name="student_course_pkey">
+    <key id="56" parent="41" name="student_course_pkey">
       <ObjectId>27631</ObjectId>
       <StateNumber>2370</StateNumber>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>student_course_pkey</UnderlyingIndexName>
     </key>
-    <foreign-key id="55" parent="40" name="student_course_student_id_fkey">
+    <foreign-key id="57" parent="41" name="student_course_student_id_fkey">
       <ObjectId>27632</ObjectId>
       <StateNumber>2370</StateNumber>
       <ColNames>student_id</ColNames>
@@ -1159,7 +1171,7 @@ sequence|table|27622|27624|3
       <RefKeyName>student_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="56" parent="40" name="student_course_course_id_fkey">
+    <foreign-key id="58" parent="41" name="student_course_course_id_fkey">
       <ObjectId>27637</ObjectId>
       <StateNumber>2370</StateNumber>
       <ColNames>course_id</ColNames>
@@ -1169,5 +1181,42 @@ sequence|table|27622|27624|3
       <RefKeyName>course_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
+    <column id="59" parent="42" name="id">
+      <Position>1</Position>
+      <DataType>integer|0s</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>2397</StateNumber>
+      <DefaultExpression>nextval(&apos;university_id_seq&apos;::regclass)</DefaultExpression>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="60" parent="42" name="university_name">
+      <Position>2</Position>
+      <DataType>char(100)|0s</DataType>
+      <StateNumber>2397</StateNumber>
+      <TypeId>1042</TypeId>
+    </column>
+    <column id="61" parent="42" name="university_rating">
+      <Position>3</Position>
+      <DataType>integer|0s</DataType>
+      <StateNumber>2397</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="62" parent="42" name="university_pkey">
+      <ObjectId>27649</ObjectId>
+      <StateNumber>2397</StateNumber>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+      <Primary>1</Primary>
+      <AccessMethodId>403</AccessMethodId>
+      <CollationIds>0</CollationIds>
+      <ClassIds>1978</ClassIds>
+    </index>
+    <key id="63" parent="42" name="university_pkey">
+      <ObjectId>27650</ObjectId>
+      <StateNumber>2397</StateNumber>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>university_pkey</UnderlyingIndexName>
+    </key>
   </database-model>
 </dataSource>
