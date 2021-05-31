@@ -1,6 +1,8 @@
 package com.example.criteriademo.config;
 
+import com.example.criteriademo.dto.CourseDto;
 import com.example.criteriademo.dto.StudentDto;
+import com.example.criteriademo.model.Course;
 import com.example.criteriademo.model.Student;
 import org.dozer.DozerBeanMapper;
 import org.dozer.loader.api.BeanMappingBuilder;
@@ -15,6 +17,7 @@ public class MappingConfig {
            @Override
            protected void configure() {
                mapping(Student.class, StudentDto.class);
+               mapping(Course.class, CourseDto.class);
            }
        };
     }

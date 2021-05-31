@@ -2,8 +2,6 @@ package com.example.criteriademo.service;
 
 import com.example.criteriademo.dao.CourseDao;
 import com.example.criteriademo.dto.CourseDto;
-import com.example.criteriademo.dto.StudentDto;
-import com.example.criteriademo.model.Course;
 import org.dozer.DozerBeanMapper;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
@@ -16,20 +14,18 @@ import java.util.stream.Collectors;
 public class CourseServiceImpl implements CourseService {
 
     private final CourseDao courseDao;
-    private final DozerBeanMapper mapingUtis;
+    private final DozerBeanMapper beanMapper;
 
-    public CourseServiceImpl(CourseDao courseDao, DozerBeanMapper mapingUtis) {
+    public CourseServiceImpl(CourseDao courseDao, DozerBeanMapper beanMapper) {
         this.courseDao = courseDao;
-        this.mapingUtis = mapingUtis;
+        this.beanMapper = beanMapper;
     }
 
     @Override
     @Transactional
     public List<CourseDto> findAllCourses() {
-//        List<Course> list = courseDao.listCourses();
-//        return list;
         return courseDao.listCourses().stream()
-                .map(student -> mapingUtis.map(student, CourseDto.class))
+                .map(student -> beanMapper.map(student, CourseDto.class))
                 .collect(Collectors.toList());
     }
 
@@ -37,7 +33,7 @@ public class CourseServiceImpl implements CourseService {
     @Transactional
     public List<CourseDto> getCoursesByStudentName(String name) {
         List<CourseDto> courses = courseDao.findCoursesByStudentName(name).stream()
-                .map(course -> mapingUtis.map(course, CourseDto.class))
+                .map(course -> beanMapper.map(course, CourseDto.class))
                 .collect(Collectors.toList());
         for (CourseDto course : courses) {
             Hibernate.initialize(course.getStudents());
@@ -49,7 +45,7 @@ public class CourseServiceImpl implements CourseService {
     @Transactional
     public List<CourseDto> findExpensiveCourse() {
         List<CourseDto> list = courseDao.findExpensiveCourse().stream()
-                .map(course -> mapingUtis.map(course, CourseDto.class))
+                .map(course -> beanMapper.map(course, CourseDto.class))
                 .collect(Collectors.toList());
         return list;
     }

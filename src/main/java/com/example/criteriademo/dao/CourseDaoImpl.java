@@ -49,6 +49,7 @@ public class CourseDaoImpl implements CourseDao {
     @Override
     public List<Course> findExpensiveCourse() {
 
+        //select course from course where course_cost = (SELECT MAX(course.course_cost) from course);
         //select course from course
         Session session = this.sessionFactory.getCurrentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
