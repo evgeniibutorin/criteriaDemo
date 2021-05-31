@@ -13,7 +13,7 @@
     <br/> <br/>
     <input value="Find by name" type="submit" />
 </form>
-<br/><a href="<%=request.getContextPath()%>/courses">Show all</a><br/>
+<br/><a href="<%=request.getContextPath()%>/courses">Show course with student</a><br/>
 <br/><a href="<%=request.getContextPath()%>/expensive_courses">Show the most expensive </a><br/>
 <c:out value="${cost}"></c:out>
 

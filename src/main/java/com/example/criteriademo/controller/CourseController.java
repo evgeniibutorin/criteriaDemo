@@ -43,13 +43,13 @@ public class CourseController {
 
     @GetMapping("/courses/find")
     public String getCoursesByStudentName(@RequestParam(value = "name") String name, ModelMap courseModel) {
-        List<Course> list = courseService.getCoursesByStudentName(name);
+        List<CourseDto> list = courseService.getCoursesByStudentName(name);
         courseModel.addAttribute("courses", list);
         return "course";
     }
     @GetMapping("/expensive_courses")
     public String getExpensiveCourse( ModelMap courseModel) {
-        List<Course> list = courseService.findExpensiveCourse();
+        List<CourseDto> list = courseService.findExpensiveCourse();
         courseModel.addAttribute("courses", list);
         return "course";
     }
