@@ -2,8 +2,9 @@ package com.example.criteriademo.service;
 
 import com.example.criteriademo.dao.CourseDao;
 import com.example.criteriademo.dto.CourseDto;
+import com.example.criteriademo.dto.StudentDto;
 import com.example.criteriademo.model.Course;
-import com.example.criteriademo.utils.MapingUtis;
+import org.dozer.DozerBeanMapper;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,9 +16,9 @@ import java.util.stream.Collectors;
 public class CourseServiceImpl implements CourseService {
 
     private final CourseDao courseDao;
-    private final MapingUtis mapingUtis;
+    private final DozerBeanMapper mapingUtis;
 
-    public CourseServiceImpl(CourseDao courseDao, MapingUtis mapingUtis) {
+    public CourseServiceImpl(CourseDao courseDao, DozerBeanMapper mapingUtis) {
         this.courseDao = courseDao;
         this.mapingUtis = mapingUtis;
     }
@@ -28,7 +29,7 @@ public class CourseServiceImpl implements CourseService {
 //        List<Course> list = courseDao.listCourses();
 //        return list;
         return courseDao.listCourses().stream()
-                .map(mapingUtis::mapToCourseDTo)
+                .map(student -> mapingUtis.map(student, CourseDto.class))
                 .collect(Collectors.toList());
     }
 
