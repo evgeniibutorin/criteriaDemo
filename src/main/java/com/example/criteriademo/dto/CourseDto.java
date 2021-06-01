@@ -30,7 +30,6 @@ public class CourseDto {
     @Setter
     Set<StudentDto> students = new HashSet<>();
 
-
     public List<CourseDto> getCourseDtoList(List<Course> courseSet){
         List<CourseDto> courseDtoSet = new ArrayList<>();
         for (Course course:courseSet){
@@ -38,6 +37,7 @@ public class CourseDto {
             CourseDto courseDto = new CourseDto();
             courseDto.setId(course.getId());
             courseDto.setCourseName(course.getCourseName());
+            courseDto.setCost(course.getCourseCost());
             for (Student student:course.getStudents()){
                 StudentDto studentDto = new StudentDto();
                 studentDto.setId(student.getId());

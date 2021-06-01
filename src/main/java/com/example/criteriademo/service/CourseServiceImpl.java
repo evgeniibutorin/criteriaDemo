@@ -36,11 +36,9 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional
-    public List<CourseDto> getCoursesByStudentName(String name) {
-        List<CourseDto> courses = courseDao.findCoursesByStudentName(name).stream()
-                .map(course -> beanMapper.map(course, CourseDto.class))
-                .collect(Collectors.toList());
-        for (CourseDto course : courses) {
+    public List<Course> getCoursesByStudentName(String name) {
+        List<Course> courses = courseDao.findCoursesByStudentName(name);
+        for (Course course : courses) {
             Hibernate.initialize(course.getStudents());
         }
         return courses;
@@ -48,10 +46,8 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional
-    public List<CourseDto> findExpensiveCourse() {
-        List<CourseDto> list = courseDao.findExpensiveCourse().stream()
-                .map(course -> beanMapper.map(course, CourseDto.class))
-                .collect(Collectors.toList());
+    public List<Course> findExpensiveCourse() {
+        List<Course> list = courseDao.findExpensiveCourse();
         return list;
     }
 

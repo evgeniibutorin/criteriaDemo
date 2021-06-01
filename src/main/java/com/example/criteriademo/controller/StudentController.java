@@ -2,7 +2,6 @@ package com.example.criteriademo.controller;
 
 import com.example.criteriademo.dto.StudentDto;
 import com.example.criteriademo.service.StudentService;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,65 +23,29 @@ public class StudentController {
         return studentDto.getStudentDtoList(studentService.findAllStudent());
     }
 
-//    @GetMapping("student/find")
-//    public List<StudentDto> getStudentsByCourse(@RequestParam(value = "name") String name) {
-////        List<StudentDto> list = studentService.getStudentByCourseName(name);
-////        studentModel.addAttribute("students", list);
-//        StudentDto studentDto = new StudentDto();
-//        return studentDto.getStudentDtoList(studentService.getStudentByCourseName(name));
-//    }
+    @GetMapping("student/find")
+    public List<StudentDto> getStudentsByCourse(@RequestParam(value = "name") String name) {
+        StudentDto studentDto = new StudentDto();
+        return studentDto.getStudentDtoList(studentService.getStudentByCourseName(name));
+    }
 
-
-//    @GetMapping("student/find")
-//    public String getStudentsByCourse(@RequestParam(value = "name") String name, ModelMap studentModel) {
-//        List<StudentDto> list = studentService.getStudentByCourseName(name);
-//        studentModel.addAttribute("students", list);
-//        return "student";
-//    }
-
-
-//    @GetMapping("students")
-//    public String getStudentsCourses(ModelMap courseModel) {
-//        List<StudentDto> list = studentService.findAllStudent();
-//        for (StudentDto s : list) {
-//            Set<CourseDto> courses = s.getCourses();
-//            for (CourseDto c : courses) {
-//                System.out.println(c.getCourseName());
-//            }
-//        }
-//        courseModel.addAttribute("students", list);
-//        return "students_with_course";
-//    }
 
     @GetMapping("student/cost")
-    public String getStudentByCoursesCost(@RequestParam(value = "cost") String cost, ModelMap courseModel) {
-        List<StudentDto> list = studentService.findStudentByCoursesCost(Integer.parseInt(cost));
-        courseModel.addAttribute("students", list);
-        return "student";
+    public List<StudentDto> getStudentByCoursesCost(@RequestParam(value = "cost") String cost) {
+        StudentDto studentDto = new StudentDto();
+        return studentDto.getStudentDtoList(studentService.findStudentByCoursesCost(Integer.parseInt(cost)));
     }
-
-//    @GetMapping("student/cost")
-//    public String getStudentByCoursesCost(@RequestParam(value = "cost") String cost, ModelMap courseModel) {
-//        List<StudentDto> list = studentService.findStudentByCoursesCost(Integer.parseInt(cost));
-//        courseModel.addAttribute("students", list);
-//        return "student";
-//    }
-
-
-
 
     @GetMapping("/student/cost/more")
-    public String getStudentWithExpensiveCourse(@RequestParam(value = "cost") String cost, ModelMap courseModel) {
-        List<StudentDto> list = studentService.getStudentsWithExpensiveCourse(cost);
-        courseModel.addAttribute("students", list);
-        return "student";
+    public List<StudentDto> getStudentWithExpensiveCourse(@RequestParam(value = "cost") String cost) {
+        StudentDto studentDto = new StudentDto();
+        return studentDto.getStudentDtoList(studentService.getStudentsWithExpensiveCourse(cost));
     }
 
-    @GetMapping("students/from/list")
-    public String getStudentInList(ModelMap courseModel) {
-        List<StudentDto> list = studentService.getStudentInList();
-        courseModel.addAttribute("students", list);
-        return "student";
+    @GetMapping("/students/from/list")
+    public List<StudentDto> getStudentInList() {
+        StudentDto studentDto = new StudentDto();
+        return studentDto.getStudentDtoList(studentService.getStudentInList());
     }
 
 }

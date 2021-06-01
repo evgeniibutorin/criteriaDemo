@@ -7,8 +7,8 @@ import java.util.List;
 
 public interface StudentService {
     List<Student> findAllStudent();
-    List<StudentDto> getStudentByCourseName(String name);
-    List<StudentDto> findStudentByCoursesCost(int cost);
-    List<StudentDto> getStudentsWithExpensiveCourse(String cost);
-    List<StudentDto> getStudentInList();
+    List<Student> getStudentByCourseName(String name);
+    List<Student> findStudentByCoursesCost(int cost);
+    List<Student> getStudentsWithExpensiveCourse(String cost);
+    List<Student> getStudentInList();
 }
