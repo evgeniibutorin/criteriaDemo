@@ -2,12 +2,14 @@ package com.example.criteriademo.controller;
 
 import com.example.criteriademo.dto.UniversityDto;
 import com.example.criteriademo.service.UniversityService;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class UniversityController {
 
     private final UniversityService universityService;
@@ -17,6 +19,7 @@ public class UniversityController {
     }
 
     @GetMapping("university")
+    @ResponseBody
     public List<UniversityDto> getStudent() {
         List<UniversityDto> list = universityService.findAllUniversity();
         return list;
