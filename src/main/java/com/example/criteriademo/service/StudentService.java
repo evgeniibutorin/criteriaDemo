@@ -6,7 +6,7 @@ import com.example.criteriademo.model.Student;
 import java.util.List;
 
 public interface StudentService {
-    List<StudentDto> findAllStudent();
+    List<Student> findAllStudent();
     List<StudentDto> getStudentByCourseName(String name);
     List<StudentDto> findStudentByCoursesCost(int cost);
     List<StudentDto> getStudentsWithExpensiveCourse(String cost);

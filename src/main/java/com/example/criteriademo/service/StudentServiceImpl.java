@@ -2,6 +2,7 @@ package com.example.criteriademo.service;
 
 import com.example.criteriademo.dao.StudentDAO;
 import com.example.criteriademo.dto.StudentDto;
+import com.example.criteriademo.model.Student;
 import org.dozer.DozerBeanMapper;
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
@@ -23,11 +24,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional
-    public List<StudentDto> findAllStudent() {
-        List<StudentDto> students = studentDAO.listStudents().stream()
-                .map(student -> beanMapper.map(student, StudentDto.class))
-                .collect(Collectors.toList());
-        for (StudentDto student : students) {
+    public List<Student> findAllStudent() {
+        List<Student> students = studentDAO.listStudents();
+        for (Student student : students) {
             Hibernate.initialize(student.getCourses());
         }
         return students;
