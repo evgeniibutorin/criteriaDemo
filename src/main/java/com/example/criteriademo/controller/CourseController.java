@@ -1,6 +1,7 @@
 package com.example.criteriademo.controller;
 
 import com.example.criteriademo.dto.CourseDto;
+import com.example.criteriademo.model.Course;
 import com.example.criteriademo.service.CourseService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +21,8 @@ public class CourseController {
     @GetMapping("course")
     public List<CourseDto> getCourses() {
         CourseDto courseDto = new CourseDto();
-        return courseDto.getCourseDtoList(courseService.findAllCourses());
+        List<Course> courses = courseService.findAllCourses();
+        return courseDto.getCourseDtoList(courses);
     }
 
     @GetMapping("/courses/find")

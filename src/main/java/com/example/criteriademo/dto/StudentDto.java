@@ -2,9 +2,7 @@ package com.example.criteriademo.dto;
 
 import com.example.criteriademo.model.Course;
 import com.example.criteriademo.model.Student;
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,6 +10,8 @@ import java.util.List;
 import java.util.Set;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class StudentDto {
 
     @Getter
