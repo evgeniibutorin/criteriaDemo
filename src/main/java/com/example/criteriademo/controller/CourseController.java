@@ -36,5 +36,8 @@ public class CourseController {
         CourseDto courseDto = new CourseDto();
         return courseDto.getCourseDtoList(courseService.findExpensiveCourse());
     }
+    public String test1(){
+       return "test1";
+    }
 
 }
