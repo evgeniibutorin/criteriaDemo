@@ -37,7 +37,8 @@ public class StudentDto {
                 CourseDto courseDto = new CourseDto();
                 courseDto.setId(course.getId());
                 courseDto.setCourseName(course.getCourseName());
-                courseDto.setCost(course.getCourseCost());
+                courseDto.setCost(course.getCourseCost()+100);
+                courseDto.setStudents(null);
                 courses.add(courseDto);
             }
             studentDto.setCourses(courses);
