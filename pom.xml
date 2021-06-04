@@ -3,6 +3,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
+  <!--    The spring-boot-starter-parent  allow you to manage the following things for multiple child projects and modules:-->
+  <!--    Configuration - Java Version and Other Properties-->
+  <!--    Dependency Management - Version of dependencies-->
+  <!--    Default Plugin Configuration-->
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.5.0</version>
+    <relativePath/> <!-- lookup parent from repository -->
+  </parent>
 
   <groupId>org.example</groupId>
   <artifactId>criteriaDemo</artifactId>
@@ -29,12 +39,45 @@
     <hsqldb.version>1.8.0.10</hsqldb.version>
   </properties>
   <dependencies>
-    <!-- Spring MVC Dependency -->
+
+    <!-- Spring boot -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-web -->
     <dependency>
       <groupId>org.springframework</groupId>
-      <artifactId>spring-webmvc</artifactId>
-      <version>${spring.version}</version>
+      <artifactId>spring-web</artifactId>
+      <version>5.3.7</version>
     </dependency>
+
+    <!-- We added the spring-boot-starter-web dependency,
+       it will by default pull all the commonly used libraries while developing Spring MVC applications,
+       such as spring-webmvc, jackson-json, validation-api, and Tomcat.-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+      <version>2.5.0</version>
+    </dependency>
+
+
+
+
+    <!-- Spring MVC Dependency -->
+<!--    <dependency>-->
+<!--      <groupId>org.springframework</groupId>-->
+<!--      <artifactId>spring-webmvc</artifactId>-->
+<!--      <version>${spring.version}</version>-->
+<!--    </dependency>-->
     <!-- Spring ORM -->
     <dependency>
       <groupId>org.springframework</groupId>
