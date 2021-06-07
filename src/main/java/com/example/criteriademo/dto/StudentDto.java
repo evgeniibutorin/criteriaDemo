@@ -3,7 +3,9 @@ package com.example.criteriademo.dto;
 import com.example.criteriademo.model.Course;
 import com.example.criteriademo.model.Student;
 import lombok.*;
+import org.springframework.jmx.export.annotation.ManagedAttribute;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -24,6 +26,8 @@ public class StudentDto {
 
 //    @Getter
 //    @Setter
+//    @ManyToMany(mappedBy = "students")
+
 //    Set<CourseDto> courses;
 
 //    public List<StudentDto> getStudentDtoList(List<Student> studentSet){

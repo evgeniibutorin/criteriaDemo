@@ -6,7 +6,8 @@ import com.example.criteriademo.model.Course;
 import java.util.List;
 
 public interface CourseService {
-    List<Course> findAllCourses();
-    List<Course> getCoursesByStudentName(String name);
-    List<Course> findExpensiveCourse();
+
+    List<CourseDto> findAllCourses();
+    List<CourseDto> getCoursesByStudentName(String name);
+    List<CourseDto> findExpensiveCourse();
 }

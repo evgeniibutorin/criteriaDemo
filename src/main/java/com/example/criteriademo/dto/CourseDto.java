@@ -26,9 +26,9 @@ public class CourseDto {
     @Setter
     int cost;
 
-    @Getter
-    @Setter
-    Set<StudentDto> students = new HashSet<>();
+//    @Getter
+//    @Setter
+//    Set<StudentDto> students = new HashSet<>();
 
 //    public List<CourseDto> getCourseDtoList(List<Course> courseList){
 //        List<CourseDto> courseDtoSet = new ArrayList<>();

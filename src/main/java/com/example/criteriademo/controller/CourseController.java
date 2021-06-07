@@ -20,24 +20,21 @@ public class CourseController {
 
     @GetMapping("course")
     public List<CourseDto> getCourses() {
-        CourseDto courseDto = new CourseDto();
-        List<Course> courses = courseService.findAllCourses();
-        return courseDto.getCourseDtoList(courses);
+        List<CourseDto> courses = courseService.findAllCourses();
+        return courses;
     }
 
     @GetMapping("/courses/find")
     public List<CourseDto> getCoursesByStudentName(@RequestParam(value = "name") String name) {
-        CourseDto courseDto = new CourseDto();
-        return courseDto.getCourseDtoList(courseService.getCoursesByStudentName(name));
+        List<CourseDto> courses = courseService.getCoursesByStudentName(name);
+        return courses;
     }
 
     @GetMapping("/expensive_courses")
     public List<CourseDto> getExpensiveCourse() {
-        CourseDto courseDto = new CourseDto();
-        return courseDto.getCourseDtoList(courseService.findExpensiveCourse());
+        List<CourseDto> courses = courseService.findExpensiveCourse();
+        return courses;
     }
-    public String test1(){
-       return "test1";
-    }
+
 
 }

@@ -19,33 +19,33 @@ public class StudentController {
 
     @GetMapping("student")
     public List<StudentDto> getStudent() {
-        StudentDto studentDto = new StudentDto();
-        return studentDto.getStudentDtoList(studentService.findAllStudent());
+        List<StudentDto> students = studentService.findAllStudent();
+        return students;
     }
 
     @GetMapping("student/find")
     public List<StudentDto> getStudentsByCourse(@RequestParam(value = "name") String name) {
-        StudentDto studentDto = new StudentDto();
-        return studentDto.getStudentDtoList(studentService.getStudentByCourseName(name));
+        List<StudentDto> students = studentService.getStudentByCourseName(name);
+        return students;
     }
 
 
     @GetMapping("student/cost")
     public List<StudentDto> getStudentByCoursesCost(@RequestParam(value = "cost") String cost) {
-        StudentDto studentDto = new StudentDto();
-        return studentDto.getStudentDtoList(studentService.findStudentByCoursesCost(Integer.parseInt(cost)));
+        List<StudentDto> students = studentService.findStudentByCoursesCost(Integer.parseInt(cost));
+        return students;
     }
 
     @GetMapping("/student/cost/more")
     public List<StudentDto> getStudentWithExpensiveCourse(@RequestParam(value = "cost") String cost) {
-        StudentDto studentDto = new StudentDto();
-        return studentDto.getStudentDtoList(studentService.getStudentsWithExpensiveCourse(cost));
+        List<StudentDto> students = studentService.getStudentsWithExpensiveCourse(cost);
+        return students;
     }
 
     @GetMapping("/students/from/list")
     public List<StudentDto> getStudentInList() {
-        StudentDto studentDto = new StudentDto();
-        return studentDto.getStudentDtoList(studentService.getStudentInList());
+        List<StudentDto> students = studentService.getStudentInList();
+        return students;
     }
 
 }

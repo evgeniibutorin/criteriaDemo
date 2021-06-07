@@ -29,6 +29,7 @@ public class Student {
     @Setter
     @Getter
 //    @Fetch(FetchMode.JOIN)
+//        @ManyToMany(mappedBy = "students")
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "student_course",
