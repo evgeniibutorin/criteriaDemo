@@ -20,8 +20,7 @@ public class MappingConfig {
            protected void configure() {
                mapping(Student.class, StudentDto.class);
                mapping(University.class, UniversityDto.class);
-               mapping(Course.class, CourseDto.class)
-               .fields("courseCost","cost");
+               mapping(Course.class, CourseDto.class);
            }
        };
     }

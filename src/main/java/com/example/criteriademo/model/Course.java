@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.dozer.Mapping;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -32,6 +33,7 @@ public class Course implements Serializable {
     @Column(name = "course_cost")
     @Getter
     @Setter
+    @Mapping("cost")
     int courseCost;
 
     @Getter

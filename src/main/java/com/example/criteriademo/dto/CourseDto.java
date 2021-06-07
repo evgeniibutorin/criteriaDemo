@@ -3,6 +3,7 @@ package com.example.criteriademo.dto;
 import com.example.criteriademo.model.Course;
 import com.example.criteriademo.model.Student;
 import lombok.*;
+import org.dozer.Mapping;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -24,7 +25,13 @@ public class CourseDto {
 
     @Getter
     @Setter
+    @Mapping("courseCost")
     int cost;
+
+
+    public void priceChanger(int tax){
+        this.cost = cost+tax;
+    }
 
 //    @Getter
 //    @Setter

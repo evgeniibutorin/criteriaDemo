@@ -24,7 +24,8 @@ public class CourseServiceImpl implements CourseService {
     @Override
     @Transactional
     public List<CourseDto> findAllCourses() {
-        return courseDao.listCourses().stream()
+        return courseDao.listCourses()
+                .stream()
                 .map(student -> beanMapper.map(student, CourseDto.class))
                 .collect(Collectors.toList());
     }
@@ -49,5 +50,7 @@ public class CourseServiceImpl implements CourseService {
                 .collect(Collectors.toList());
         return list;
     }
+
+
 
 }
