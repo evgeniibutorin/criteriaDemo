@@ -30,26 +30,26 @@ public class CourseDto {
     @Setter
     Set<StudentDto> students = new HashSet<>();
 
-    public List<CourseDto> getCourseDtoList(List<Course> courseList){
-        List<CourseDto> courseDtoSet = new ArrayList<>();
-        for (Course course:courseList){
-            students = new HashSet<>();
-            CourseDto courseDto = new CourseDto();
-            courseDto.setId(course.getId());
-            courseDto.setCourseName(course.getCourseName());
-            courseDto.setCost(course.getCourseCost()+100);
-            for (Student student:course.getStudents()){
-                StudentDto studentDto = new StudentDto();
-                studentDto.setId(student.getId());
-                studentDto.setStudentName(student.getStudentName());
-                studentDto.setCourses(null);
-                students.add(studentDto);
-            }
-            courseDto.setStudents(students);
-            courseDtoSet.add(courseDto);
-        }
-        return courseDtoSet;
-    }
+//    public List<CourseDto> getCourseDtoList(List<Course> courseList){
+//        List<CourseDto> courseDtoSet = new ArrayList<>();
+//        for (Course course:courseList){
+//            students = new HashSet<>();
+//            CourseDto courseDto = new CourseDto();
+//            courseDto.setId(course.getId());
+//            courseDto.setCourseName(course.getCourseName());
+//            courseDto.setCost(course.getCourseCost()+100);
+//            for (Student student:course.getStudents()){
+//                StudentDto studentDto = new StudentDto();
+//                studentDto.setId(student.getId());
+//                studentDto.setStudentName(student.getStudentName());
+//                studentDto.setCourses(null);
+//                students.add(studentDto);
+//            }
+//            courseDto.setStudents(students);
+//            courseDtoSet.add(courseDto);
+//        }
+//        return courseDtoSet;
+//    }
 
 }
 

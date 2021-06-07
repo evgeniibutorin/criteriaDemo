@@ -36,6 +36,7 @@ public class Course implements Serializable {
 
     @Getter
     @Setter
+//    @ManyToMany(mappedBy = "courses")
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @Fetch(FetchMode.SELECT)
     @JoinTable(
