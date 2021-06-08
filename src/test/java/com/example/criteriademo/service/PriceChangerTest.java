@@ -4,20 +4,11 @@ import com.example.criteriademo.model.Price;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import static org.mockito.Mockito.*;
 
 public class PriceChangerTest {
-
-//    private Price price = new Price();
-//    Pluser pluser = new Pluser();
-//    PriceChanger priceChanger = new PriceChanger(price,pluser);
-//    @Test
-//    public void changePrice() {
-//        priceChanger.changePrice(100);
-//        Assert.assertEquals(price.getPrice(),100);
-//    }
-
 
     private Price price;
     Pluser pluser;
@@ -28,8 +19,8 @@ public class PriceChangerTest {
         pluser = mock(Pluser.class);
         priceChanger  = new PriceChanger(price,pluser);
         priceChanger.changePrice(100);
-
-        verify(pluser, atLeast(0)).pl();
+        priceChanger.changePrice(100);
+        verify(pluser,atLeast(2)).pluser(99);
     }
 
 }
