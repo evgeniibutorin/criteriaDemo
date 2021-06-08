@@ -30,4 +30,24 @@ public class UniversityDaoImpl implements UniversityDao {
         List<University> students = query.getResultList();
         return students;
     }
+
+    @Override
+    public University saveOne(University university) {
+        Session session = this.sessionFactory.openSession();
+
+        session.save(university);
+
+//        Query query = session.createSQLQuery("insert into university (id, university_name, university_rating) VALUES (:1,:2,:3)")
+//                .setParameter("1", university.getId())
+//                .setParameter("2",university.getUniversityName())
+//                .setParameter("3", university.getRating());
+//        query.executeUpdate();
+        return university;
+    }
+
+    @Override
+    public University getOne(int id) {
+        Session session = this.sessionFactory.openSession();
+        return (University) session.get(University.class, id);
+    }
 }

@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface UniversityDao {
     List<University> listUniversity();
+    University saveOne(University university);
+    University getOne(int id);
 }

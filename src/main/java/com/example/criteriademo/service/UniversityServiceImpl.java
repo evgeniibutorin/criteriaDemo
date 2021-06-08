@@ -2,6 +2,7 @@ package com.example.criteriademo.service;
 
 import com.example.criteriademo.dao.UniversityDao;
 import com.example.criteriademo.dto.UniversityDto;
+import com.example.criteriademo.model.University;
 import org.dozer.DozerBeanMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,5 +28,11 @@ public class UniversityServiceImpl implements UniversityService {
                 .map(student -> beanMapper.map(student, UniversityDto.class))
                 .collect(Collectors.toList());
         return university;
+    }
+
+    @Override
+    @Transactional
+    public University save(University university) {
+        return universityDao.saveOne(university);
     }
 }
