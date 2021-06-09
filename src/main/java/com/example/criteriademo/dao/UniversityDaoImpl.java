@@ -33,7 +33,8 @@ public class UniversityDaoImpl implements UniversityDao {
 
     @Override
     public University saveOne(University university) {
-        Session session = this.sessionFactory.openSession();
+        System.out.println("Dao is working");
+        Session session = this.sessionFactory.getCurrentSession();
 
         session.save(university);
 
@@ -47,7 +48,8 @@ public class UniversityDaoImpl implements UniversityDao {
 
     @Override
     public University getOne(int id) {
-        Session session = this.sessionFactory.openSession();
-        return (University) session.get(University.class, id);
+        Session session = this.sessionFactory.getCurrentSession();
+        University university = (University) session.get(University.class, id);
+        return university;
     }
 }

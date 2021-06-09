@@ -38,9 +38,11 @@ public class UniversityServiceImplTest {
     @Test
     public void save() {
 
-        University university = new University(0, "PSU", 130);
+        University university = new University(3, "PSU", 130);
         universityDao.saveOne(university);
-        University university1 = universityDao.getOne(0);
+        University university1 = universityDao.getOne(3);
+        //todo: delete next line
+        System.out.println("Before bug");
         Assert.assertEquals("PSU", university1.getUniversityName());
     }
 }

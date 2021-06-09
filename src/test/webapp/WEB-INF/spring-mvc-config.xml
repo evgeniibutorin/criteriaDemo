@@ -24,7 +24,7 @@
     <!-- Step 1: Define Database DataSource / connection pool -->
     <bean id="myDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.h2.Driver" />
-        <property name="url" value="jdbc:h2:mem:myDb;DB_CLOSE_DELAY=-1" />
+        <property name="url" value="jdbc:h2:mem:test;INIT=runscript from '~/schema.sql'" />
         <property name="username" value="postgres" />
         <property name="password" value="32167" />
         <property name="connectionProperties">
